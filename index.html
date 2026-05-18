@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Satisfaction Client | N'ZALI Export</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background:
+                linear-gradient(rgba(8, 15, 30, 0.85), rgba(8, 15, 30, 0.85)),
+                url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=1400&auto=format&fit=crop') center/cover no-repeat;
+
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 520px;
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            animation: fadeIn 0.6s ease;
+        }
+
+        .top-banner {
+            background: linear-gradient(135deg, #0B1F3A, #10294d);
+            color: white;
+            padding: 35px 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .top-banner h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .top-banner p {
+            font-size: 14px;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        .content {
+            padding: 35px 30px;
+        }
+
+        .info-box {
+            background: #f8f9fc;
+            border-left: 5px solid #D4A017;
+            border-right: 5px solid #D4A017;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #0B1F3A;
+        }
+
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .star {
+            font-size: 40px;
+            color: #d1d5db;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .star:hover {
+            transform: scale(1.15);
+        }
+
+        .star.active {
+            color: #f5b301;
+        }
+
+        .emoji-feedback {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 50px;
+            display: none;
+            animation: pop 0.4s ease;
+        }
+
+        .recommend-box {
+            margin-bottom: 25px;
+        }
+
+        .recommend-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .recommend-buttons button {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .yes {
+            background: #e7f8ee;
+            color: #159947;
+        }
+
+        .no {
+            background: #fdeaea;
+            color: #d93025;
+        }
+
+        .recommend-buttons button.active {
+            border: 2px solid #0B1F3A;
+        }
+
+        textarea {
+            width: 100%;
+            height: 130px;
+            border: 1px solid #dcdcdc;
+            border-radius: 15px;
+            padding: 18px;
+            resize: none;
+            outline: none;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        textarea:focus {
+            border-color: #0B1F3A;
+        }
+
+        .upload-box {
+            background: #f8f9fc;
+            border: 2px dashed #d1d5db;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 25px;
+            color: #666;
+        }
+
+        .upload-box i {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #0B1F3A;
+        }
+
+        .submit-btn {
+            width: 100%;
+            border: none;
+            padding: 17px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #0B1F3A, #16345e);
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .success-card {
+            display: none;
+            text-align: center;
+            padding: 40px 30px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .success-image {
+            width: 140px;
+            margin-bottom: 20px;
+        }
+
+        .success-card h2 {
+            color: #159947;
+            margin-bottom: 12px;
+        }
+
+        .success-card p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .contact-box {
+            background: #f5f7fa;
+            border-radius: 15px;
+            padding: 18px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #444;
+        }
+
+        .contact-box i {
+            color: #D4A017;
+            margin-right: 8px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pop {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @media(max-width:600px) {
+
+            .container {
+                border-radius: 18px;
+            }
+
+            .content {
+                padding: 25px 20px;
+            }
+
+            .star {
+                font-size: 34px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="top-banner">
+
+            <!-- IMAGE LOGO -->
+            <img src="https://cdn-icons-png.flaticon.com/512/3125/3125713.png" class="logo" alt="logo">
+
+            <h1>N'ZALI Export</h1>
+
+            <p>
+                Votre satisfaction est essentielle pour améliorer
+                nos services d’importation Chine → Côte d’Ivoire.
+            </p>
+
+        </div>
+
+        <!-- FORM CONTENT -->
+        <div class="content" id="formContent">
+
+            <div class="info-box">
+                <i class="fa-solid fa-shield-halved"></i>
+                Merci pour votre confiance.
+                Votre avis nous aide à garantir un service
+                fiable, transparent et professionnel.
+            </div>
+
+            <!-- STARS -->
+            <div class="section-title">
+                Notez votre expérience
+            </div>
+
+            <div class="stars">
+
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+
+            </div>
+
+            <!-- EMOJI -->
+            <div class="emoji-feedback" id="emojiFeedback">
+                😊
+            </div>
+
+            <!-- RECOMMEND -->
+            <div class="recommend-box">
+
+                <div class="section-title">
+                    Recommanderiez-vous N'ZALI Export ?
+                </div>
+
+                <div class="recommend-buttons">
+
+                    <button class="yes" id="yesBtn">
+                        Oui
+                    </button>
+
+                    <button class="no" id="noBtn">
+                        Non
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- COMMENT -->
+            <div class="section-title">
+                Votre commentaire
+            </div>
+
+            <textarea placeholder="Partagez votre expérience avec notre service...">
+    </textarea>
+
+            <!-- IMAGE UPLOAD -->
+            <div class="upload-box">
+                <i class="fa-solid fa-camera"></i>
+
+                <p>
+                    Ajouter une photo de votre commande
+                    (optionnel)
+                </p>
+
+                <br>
+
+                <input type="file">
+            </div>
+
+            <!-- BUTTON -->
+            <button class="submit-btn" id="submitBtn">
+                Envoyer mon avis
+            </button>
+
+        </div>
+
+        <!-- SUCCESS -->
+        <div class="success-card" id="successCard">
+
+            <!-- SUCCESS IMAGE -->
+            <img class="success-image" src="https://cdn-icons-png.flaticon.com/512/845/845646.png" alt="success">
+
+            <h2>Merci pour votre retour ✅</h2>
+
+            <p>
+                Votre avis a bien été enregistré.
+                Nous sommes heureux de vous accompagner
+                dans vos projets d’importation.
+            </p>
+
+            <div class="contact-box">
+
+                <p>
+                    <i class="fa-brands fa-whatsapp"></i>
+                    WhatsApp :
+                    +225 05 66 75 34 86
+                </p>
+
+                <br>
+
+                <p>
+                    <i class="fa-solid fa-globe"></i>
+                    Chine → Côte d’Ivoire
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        const stars = document.querySelectorAll(".star");
+        const emoji = document.getElementById("emojiFeedback");
+
+        let rating = 0;
+
+        const emojis = {
+            1: "😡",
+            2: "😕",
+            3: "🙂",
+            4: "😊",
+            5: "😍"
+        };
+
+        stars.forEach((star, index) => {
+
+            star.addEventListener("click", () => {
+
+                rating = index + 1;
+
+                stars.forEach((s, i) => {
+                    s.classList.toggle("active", i < rating);
+                });
+
+                emoji.style.display = "block";
+                emoji.innerHTML = emojis[rating];
+
+            });
+
+        });
+
+        // YES / NO
+        const yesBtn = document.getElementById("yesBtn");
+        const noBtn = document.getElementById("noBtn");
+
+        yesBtn.addEventListener("click", () => {
+            yesBtn.classList.add("active");
+            noBtn.classList.remove("active");
+        });
+
+        noBtn.addEventListener("click", () => {
+            noBtn.classList.add("active");
+            yesBtn.classList.remove("active");
+        });
+
+        // SUBMIT
+        document.getElementById("submitBtn")
+            .addEventListener("click", () => {
+
+                document.getElementById("formContent").style.display = "none";
+
+                document.getElementById("successCard").style.display = "block";
+
+            });
+
+    </script>
+
+</body>
+
+</html>
