@@ -341,12 +341,6 @@
 
         }
 
-        tr:hover {
-
-            background: #fafbfd;
-
-        }
-
         .radio-group {
 
             display: flex;
@@ -846,7 +840,7 @@
                         Nom (facultatif)
                     </label>
 
-                    <input type="text" placeholder="Votre nom">
+                    <input type="text" id="nom" placeholder="Votre nom">
 
                 </div>
 
@@ -866,7 +860,7 @@
                         Nom du service ou fournisseur
                     </label>
 
-                    <input type="text" placeholder="Nom de l’entreprise ou du prestataire">
+                    <input type="text" id="fournisseur" placeholder="Nom de l’entreprise ou du prestataire">
 
                 </div>
 
@@ -1059,7 +1053,8 @@
                 </h3>
 
                 <textarea
-                    placeholder="Expliquez les difficultés rencontrées, les points positifs ou les éléments qui vous ont marqué durant votre précédente expérience d’import-export..."></textarea>
+                    placeholder="Expliquez les difficultés rencontrées, les points positifs ou les éléments qui vous ont marqué durant votre précédente expérience d’import-export..."
+                    id="commentaire"></textarea>
 
             </div>
 
@@ -1075,7 +1070,7 @@
 
                     </label>
 
-                    <input type="number" min="0" max="10" placeholder="/10">
+                    <input type="number" id="note" min="0" max="10" placeholder="/10">
 
                 </div>
 
@@ -1222,7 +1217,27 @@
 
         document
             .getElementById("submitBtn")
-            .addEventListener("click", () => {
+            .addEventListener("click", async () => {
+
+                const data = {
+
+                    nom: document.getElementById("nom").value,
+
+                    fournisseur: document.getElementById("fournisseur").value,
+
+                    note: document.getElementById("note").value,
+
+                    commentaire: document.getElementById("commentaire").value
+
+                };
+
+                await fetch("https://script.google.com/macros/s/AKfycbwycJ_27YmFZETaFSrxQewjbXuvocX84zi1WxsSMoVC_94BT0jJ37Kp_kDTSJDumEbT/exec", {
+
+                    method: "POST",
+
+                    body: JSON.stringify(data)
+
+                });
 
                 document
                     .getElementById("formContent")
