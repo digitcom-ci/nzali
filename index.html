@@ -5,14 +5,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Satisfaction Client | N'ZALI Export</title>
+    <title>Fiche de Satisfaction | AFG Import-Export</title>
 
-    <!-- Google Font -->
+    <!-- GOOGLE FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <!-- Icons -->
+    <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
     <style>
@@ -24,262 +24,749 @@
         }
 
         body {
+
             background:
-                linear-gradient(rgba(8, 15, 30, 0.85), rgba(8, 15, 30, 0.85)),
-                url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=1400&auto=format&fit=crop') center/cover no-repeat;
+                linear-gradient(rgba(5, 15, 35, .90), rgba(5, 15, 35, .90)),
+                url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
 
             min-height: 100vh;
+            padding: 40px 20px;
+
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+
         }
 
         .container {
+
             width: 100%;
-            max-width: 520px;
-            background: white;
-            border-radius: 25px;
+            max-width: 1150px;
+
+            background: #fff;
+
+            border-radius: 28px;
+
             overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
-            animation: fadeIn 0.6s ease;
+
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .25);
+
+            animation: fadeIn .6s ease;
+
         }
 
-        .top-banner {
-            background: linear-gradient(135deg, #0B1F3A, #10294d);
+        /* HEADER */
+
+        .header {
+
+            background:
+                linear-gradient(135deg, #081325, #0B1F3A, #16345e);
+
             color: white;
-            padding: 35px 30px;
-            text-align: center;
+
+            padding: 50px 40px;
+
             position: relative;
+
+            overflow: hidden;
+
+        }
+
+        .header::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 250px;
+            height: 250px;
+
+            background: rgba(255, 255, 255, .05);
+
+            border-radius: 50%;
+
+            top: -120px;
+            right: -80px;
+
+        }
+
+        .header-top {
+
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            position: relative;
+            z-index: 2;
+
         }
 
         .logo {
+
             width: 90px;
             height: 90px;
+
             border-radius: 50%;
-            border: 4px solid rgba(255, 255, 255, 0.2);
+
             object-fit: cover;
-            margin-bottom: 15px;
+
+            border: 4px solid rgba(255, 255, 255, .15);
+
+            background: white;
+
+            padding: 12px;
+
         }
 
-        .top-banner h1 {
-            font-size: 28px;
-            margin-bottom: 8px;
+        .header h1 {
+
+            font-size: 38px;
+
+            margin-bottom: 10px;
+
         }
 
-        .top-banner p {
+        .header p {
+
+            max-width: 750px;
+
+            line-height: 1.8;
+
+            opacity: .92;
+
+            font-size: 15px;
+
+        }
+
+        .header-badges {
+
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+
+            margin-top: 25px;
+
+            position: relative;
+            z-index: 2;
+
+        }
+
+        .badge {
+
+            background: rgba(255, 255, 255, .10);
+
+            border: 1px solid rgba(255, 255, 255, .08);
+
+            padding: 12px 18px;
+
+            border-radius: 14px;
+
             font-size: 14px;
-            opacity: 0.9;
-            line-height: 1.5;
+
+            backdrop-filter: blur(10px);
+
         }
+
+        .badge i {
+
+            color: #D4A017;
+
+            margin-right: 8px;
+
+        }
+
+        /* CONTENT */
 
         .content {
-            padding: 35px 30px;
-        }
 
-        .info-box {
-            background: #f8f9fc;
-            border-left: 5px solid #D4A017;
-            border-right: 5px solid #D4A017;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            font-size: 14px;
-            color: #555;
+            padding: 40px;
+
         }
 
         .section-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 15px;
+
+            font-size: 24px;
+
+            font-weight: 700;
+
             color: #0B1F3A;
-        }
 
-        .stars {
+            margin-bottom: 20px;
+
             display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 30px;
+            align-items: center;
+            gap: 10px;
+
         }
 
-        .star {
-            font-size: 40px;
-            color: #d1d5db;
-            cursor: pointer;
-            transition: 0.3s;
+        .section-title i {
+
+            color: #D4A017;
+
         }
 
-        .star:hover {
-            transform: scale(1.15);
+        /* INFO GRID */
+
+        .info-grid {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 22px;
+
+            margin-bottom: 40px;
+
         }
 
-        .star.active {
-            color: #f5b301;
-        }
+        .input-box {
 
-        .emoji-feedback {
-            text-align: center;
-            margin-bottom: 25px;
-            font-size: 50px;
-            display: none;
-            animation: pop 0.4s ease;
-        }
-
-        .recommend-box {
-            margin-bottom: 25px;
-        }
-
-        .recommend-buttons {
             display: flex;
-            gap: 15px;
+
+            flex-direction: column;
+
         }
 
-        .recommend-buttons button {
-            flex: 1;
-            padding: 14px;
-            border: none;
-            border-radius: 12px;
+        .input-box label {
+
+            margin-bottom: 10px;
+
             font-weight: 600;
+
+            color: #0B1F3A;
+
+            font-size: 15px;
+
+        }
+
+        .input-box input,
+        .input-box textarea {
+
+            border: 1px solid #d7dce3;
+
+            padding: 15px;
+
+            border-radius: 14px;
+
+            outline: none;
+
+            transition: .3s;
+
+            background: #fafbfd;
+
+        }
+
+        .input-box input:focus,
+        .input-box textarea:focus {
+
+            border-color: #D4A017;
+
+            background: white;
+
+            box-shadow: 0 0 0 4px rgba(212, 160, 23, .10);
+
+        }
+
+        .full {
+
+            grid-column: 1 / -1;
+
+        }
+
+        /* TABLE */
+
+        .table-wrapper {
+
+            overflow-x: auto;
+
+            border-radius: 18px;
+
+            border: 1px solid #ececec;
+
+            margin-bottom: 35px;
+
+        }
+
+        table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 850px;
+
+        }
+
+        table thead {
+
+            background: #0B1F3A;
+
+            color: white;
+
+        }
+
+        table th {
+
+            padding: 20px;
+
+            text-align: center;
+
+            font-size: 14px;
+
+        }
+
+        table td {
+
+            padding: 20px;
+
+            border-bottom: 1px solid #ececec;
+
+            text-align: center;
+
+            font-size: 14px;
+
+        }
+
+        table td:first-child {
+
+            text-align: left;
+
+            font-weight: 500;
+
+            color: #333;
+
+            width: 35%;
+
+        }
+
+        tr:hover {
+
+            background: #fafbfd;
+
+        }
+
+        .radio-group {
+
+            display: flex;
+
+            justify-content: center;
+
+        }
+
+        .radio-group input {
+
+            width: 20px;
+            height: 20px;
+
+            accent-color: #D4A017;
+
             cursor: pointer;
-            transition: 0.3s;
+
+        }
+
+        /* COMMENT */
+
+        .comment-box {
+
+            margin-bottom: 35px;
+
+        }
+
+        .comment-box textarea {
+
+            width: 100%;
+
+            min-height: 170px;
+
+            padding: 20px;
+
+            border-radius: 16px;
+
+            border: 1px solid #d7dce3;
+
+            resize: none;
+
+            outline: none;
+
+            background: #fafbfd;
+
+        }
+
+        /* SCORE */
+
+        .score-section {
+
+            background: #f7f9fc;
+
+            border-radius: 22px;
+
+            padding: 30px;
+
+            margin-bottom: 35px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 30px;
+
+            flex-wrap: wrap;
+
+        }
+
+        .score-box {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+
+        }
+
+        .score-box input {
+
+            width: 100px;
+
+            padding: 14px;
+
+            border-radius: 14px;
+
+            border: 1px solid #ccc;
+
+            text-align: center;
+
+            font-size: 20px;
+
+            font-weight: 700;
+
+        }
+
+        .recommendation {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+            flex-wrap: wrap;
+
+        }
+
+        .recommend-btns {
+
+            display: flex;
+
+            gap: 15px;
+
+        }
+
+        .recommend-btns button {
+
+            border: none;
+
+            padding: 14px 26px;
+
+            border-radius: 14px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: .3s;
+
+            font-size: 15px;
+
         }
 
         .yes {
-            background: #e7f8ee;
-            color: #159947;
+
+            background: #e9f8ef;
+
+            color: #169c4a;
+
         }
 
         .no {
-            background: #fdeaea;
+
+            background: #fdecec;
+
             color: #d93025;
+
         }
 
-        .recommend-buttons button.active {
+        .recommend-btns button.active {
+
             border: 2px solid #0B1F3A;
+
+            transform: scale(1.03);
+
         }
 
-        textarea {
-            width: 100%;
-            height: 130px;
-            border: 1px solid #dcdcdc;
-            border-radius: 15px;
-            padding: 18px;
-            resize: none;
-            outline: none;
-            margin-bottom: 20px;
-            font-size: 14px;
-        }
-
-        textarea:focus {
-            border-color: #0B1F3A;
-        }
+        /* UPLOAD */
 
         .upload-box {
-            background: #f8f9fc;
-            border: 2px dashed #d1d5db;
-            border-radius: 15px;
-            padding: 20px;
+
+            border: 2px dashed #d6dce4;
+
+            background: #fafbfd;
+
+            border-radius: 18px;
+
+            padding: 30px;
+
             text-align: center;
-            margin-bottom: 25px;
-            color: #666;
+
+            margin-bottom: 35px;
+
         }
 
         .upload-box i {
-            font-size: 28px;
-            margin-bottom: 10px;
+
+            font-size: 40px;
+
             color: #0B1F3A;
+
+            margin-bottom: 15px;
+
         }
 
+        .upload-box p {
+
+            color: #555;
+
+            margin-bottom: 15px;
+
+        }
+
+        .upload-box input {
+
+            margin-top: 10px;
+
+        }
+
+        /* BUTTON */
+
         .submit-btn {
+
             width: 100%;
+
             border: none;
-            padding: 17px;
-            border-radius: 15px;
-            background: linear-gradient(135deg, #0B1F3A, #16345e);
+
+            padding: 20px;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(135deg, #0B1F3A, #16345e);
+
             color: white;
-            font-size: 16px;
+
+            font-size: 17px;
+
             font-weight: 600;
+
             cursor: pointer;
-            transition: 0.3s;
+
+            transition: .3s;
+
         }
 
         .submit-btn:hover {
+
             transform: translateY(-2px);
+
+            box-shadow: 0 10px 25px rgba(11, 31, 58, .25);
+
         }
+
+        /* SUCCESS */
 
         .success-card {
+
             display: none;
+
             text-align: center;
-            padding: 40px 30px;
-            animation: fadeIn 0.5s ease;
+
+            padding: 70px 40px;
+
+            animation: fadeIn .5s ease;
+
         }
 
-        .success-image {
-            width: 140px;
-            margin-bottom: 20px;
+        .success-card img {
+
+            width: 160px;
+
+            margin-bottom: 25px;
+
         }
 
         .success-card h2 {
-            color: #159947;
-            margin-bottom: 12px;
+
+            color: #169c4a;
+
+            font-size: 38px;
+
+            margin-bottom: 15px;
+
         }
 
         .success-card p {
+
             color: #555;
-            line-height: 1.7;
-            margin-bottom: 20px;
+
+            line-height: 1.9;
+
+            max-width: 700px;
+
+            margin: auto;
+
         }
 
-        .contact-box {
-            background: #f5f7fa;
-            border-radius: 15px;
-            padding: 18px;
-            margin-top: 20px;
-            font-size: 14px;
-            color: #444;
+        .success-info {
+
+            margin-top: 35px;
+
+            background: #f7f9fc;
+
+            border-radius: 20px;
+
+            padding: 30px;
+
+            max-width: 650px;
+
+            margin-inline: auto;
+
         }
 
-        .contact-box i {
+        .success-info p {
+
+            margin: 15px 0;
+
+            font-weight: 500;
+
+        }
+
+        .success-info i {
+
             color: #D4A017;
-            margin-right: 8px;
+
+            margin-right: 10px;
+
         }
+
+        /* FOOTER */
+
+        .footer-note {
+
+            margin-top: 30px;
+
+            text-align: center;
+
+            color: #6b7280;
+
+            font-size: 14px;
+
+        }
+
+        /* ANIMATION */
 
         @keyframes fadeIn {
+
             from {
+
                 opacity: 0;
+
                 transform: translateY(20px);
+
             }
 
             to {
+
                 opacity: 1;
+
                 transform: translateY(0);
+
             }
+
         }
 
-        @keyframes pop {
-            0% {
-                transform: scale(0.5);
-                opacity: 0;
+        /* RESPONSIVE */
+
+        @media(max-width:900px) {
+
+            .info-grid {
+
+                grid-template-columns: 1fr;
+
             }
 
-            100% {
-                transform: scale(1);
-                opacity: 1;
+            .content {
+
+                padding: 25px;
+
             }
+
+            .header {
+
+                padding: 35px 25px;
+
+            }
+
+            .header-top {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+            }
+
+            .header h1 {
+
+                font-size: 30px;
+
+            }
+
+            .score-section {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+            }
+
         }
 
         @media(max-width:600px) {
 
-            .container {
-                border-radius: 18px;
+            .recommendation {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
             }
 
-            .content {
-                padding: 25px 20px;
+            .recommend-btns {
+
+                width: 100%;
+
             }
 
-            .star {
-                font-size: 34px;
+            .recommend-btns button {
+
+                flex: 1;
+
+            }
+
+            .submit-btn {
+
+                font-size: 15px;
+
             }
 
         }
@@ -291,127 +778,467 @@
     <div class="container">
 
         <!-- HEADER -->
-        <div class="top-banner">
 
-            <!-- IMAGE LOGO -->
-            <img src="https://cdn-icons-png.flaticon.com/512/3125/3125713.png" class="logo" alt="logo">
+        <div class="header">
 
-            <h1>N'ZALI Export</h1>
+            <div class="header-top">
 
-            <p>
-                Votre satisfaction est essentielle pour améliorer
-                nos services d’importation Chine → Côte d’Ivoire.
-            </p>
+                <img src="https://cdn-icons-png.flaticon.com/512/3125/3125713.png" class="logo">
+
+                <div>
+
+                    <h1>AFG IMPORT-EXPORT</h1>
+
+                    <p>
+
+                        Fiche de satisfaction client — Service
+                        d’accompagnement pour l’achat,
+                        l’importation et le sourcing de produits.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="header-badges">
+
+                <div class="badge">
+                    <i class="fa-solid fa-ship"></i>
+                    Importation Internationale
+                </div>
+
+                <div class="badge">
+                    <i class="fa-solid fa-box"></i>
+                    Sourcing Produits
+                </div>
+
+                <div class="badge">
+                    <i class="fa-solid fa-truck"></i>
+                    Suivi Logistique
+                </div>
+
+                <div class="badge">
+                    <i class="fa-solid fa-circle-check"></i>
+                    Service Professionnel
+                </div>
+
+            </div>
 
         </div>
 
-        <!-- FORM CONTENT -->
+        <!-- CONTENT -->
+
         <div class="content" id="formContent">
 
-            <div class="info-box">
-                <i class="fa-solid fa-shield-halved"></i>
-                Merci pour votre confiance.
-                Votre avis nous aide à garantir un service
-                fiable, transparent et professionnel.
-            </div>
+            <!-- INFOS -->
 
-            <!-- STARS -->
             <div class="section-title">
-                Notez votre expérience
-            </div>
 
-            <div class="stars">
+                <i class="fa-solid fa-file-lines"></i>
 
-                <span class="star" data-value="1">★</span>
-                <span class="star" data-value="2">★</span>
-                <span class="star" data-value="3">★</span>
-                <span class="star" data-value="4">★</span>
-                <span class="star" data-value="5">★</span>
+                Informations Client
 
             </div>
 
-            <!-- EMOJI -->
-            <div class="emoji-feedback" id="emojiFeedback">
-                😊
-            </div>
+            <div class="info-grid">
 
-            <!-- RECOMMEND -->
-            <div class="recommend-box">
+                <div class="input-box">
 
-                <div class="section-title">
-                    Recommanderiez-vous N'ZALI Export ?
+                    <label>
+                        Date de la commande
+                    </label>
+
+                    <input type="date">
+
                 </div>
 
-                <div class="recommend-buttons">
+                <div class="input-box">
 
-                    <button class="yes" id="yesBtn">
-                        Oui
-                    </button>
+                    <label>
+                        Nom du client (facultatif)
+                    </label>
 
-                    <button class="no" id="noBtn">
-                        Non
-                    </button>
+                    <input type="text" placeholder="Votre nom">
 
                 </div>
+
+                <div class="input-box">
+
+                    <label>
+                        Contact
+                    </label>
+
+                    <input type="text" placeholder="+225 00 00 00 00">
+
+                </div>
+
+                <div class="input-box">
+
+                    <label>
+                        Produit(s) ou service(s)
+                    </label>
+
+                    <input type="text" placeholder="Ex : vêtements, électronique...">
+
+                </div>
+
+            </div>
+
+            <!-- TABLE -->
+
+            <div class="section-title">
+
+                <i class="fa-solid fa-star"></i>
+
+                Évaluation du service
+
+            </div>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Critères</th>
+
+                            <th>Très satisfait</th>
+
+                            <th>Satisfait</th>
+
+                            <th>Peu satisfait</th>
+
+                            <th>Pas du tout satisfait</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                Accueil et compréhension du besoin
+                            </td>
+
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q1"></div>
+                            </td>
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q1"></div>
+                            </td>
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q1"></div>
+                            </td>
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q1"></div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Propositions de sourcing adaptées
+                            </td>
+
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q2"></div>
+                            </td>
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q2"></div>
+                            </td>
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q2"></div>
+                            </td>
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q2"></div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Clarté du devis / prix
+                            </td>
+
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q3"></div>
+                            </td>
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q3"></div>
+                            </td>
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q3"></div>
+                            </td>
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q3"></div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Suivi de la commande
+                            </td>
+
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q4"></div>
+                            </td>
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q4"></div>
+                            </td>
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q4"></div>
+                            </td>
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q4"></div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Délai de réception
+                            </td>
+
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q5"></div>
+                            </td>
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q5"></div>
+                            </td>
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q5"></div>
+                            </td>
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q5"></div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Qualité du produit reçu
+                            </td>
+
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q6"></div>
+                            </td>
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q6"></div>
+                            </td>
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q6"></div>
+                            </td>
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q6"></div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Respect du budget
+                            </td>
+
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q7"></div>
+                            </td>
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q7"></div>
+                            </td>
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q7"></div>
+                            </td>
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q7"></div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Disponibilité et écoute de l’équipe
+                            </td>
+
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q8"></div>
+                            </td>
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q8"></div>
+                            </td>
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q8"></div>
+                            </td>
+                            <td>
+                                <div class="radio-group"><input type="radio" name="q8"></div>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
 
             </div>
 
             <!-- COMMENT -->
-            <div class="section-title">
-                Votre commentaire
+
+            <div class="comment-box">
+
+                <div class="section-title">
+
+                    <i class="fa-solid fa-comment"></i>
+
+                    Commentaires / Suggestions
+
+                </div>
+
+                <textarea placeholder="Partagez votre expérience avec notre service..."></textarea>
+
             </div>
 
-            <textarea placeholder="Partagez votre expérience avec notre service...">
-    </textarea>
+            <!-- SCORE -->
 
-            <!-- IMAGE UPLOAD -->
+            <div class="score-section">
+
+                <div class="score-box">
+
+                    <label>
+
+                        ⭐ Note globale :
+
+                    </label>
+
+                    <input type="number" min="0" max="10" placeholder="/10">
+
+                </div>
+
+                <div class="recommendation">
+
+                    <label>
+
+                        Souhaitez-vous recommander
+                        AFG Import-Export ?
+
+                    </label>
+
+                    <div class="recommend-btns">
+
+                        <button class="yes" id="yesBtn">
+
+                            <i class="fa-solid fa-thumbs-up"></i>
+
+                            Oui
+
+                        </button>
+
+                        <button class="no" id="noBtn">
+
+                            <i class="fa-solid fa-thumbs-down"></i>
+
+                            Non
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- IMAGE -->
+
             <div class="upload-box">
+
                 <i class="fa-solid fa-camera"></i>
 
                 <p>
-                    Ajouter une photo de votre commande
-                    (optionnel)
+
+                    Ajouter une photo de votre
+                    commande ou produit reçu (optionnel)
+
                 </p>
 
-                <br>
-
                 <input type="file">
+
             </div>
 
             <!-- BUTTON -->
+
             <button class="submit-btn" id="submitBtn">
-                Envoyer mon avis
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+                Envoyer la fiche de satisfaction
+
             </button>
+
+            <div class="footer-note">
+
+                Merci pour votre confiance et votre collaboration.
+
+            </div>
 
         </div>
 
         <!-- SUCCESS -->
+
         <div class="success-card" id="successCard">
 
-            <!-- SUCCESS IMAGE -->
-            <img class="success-image" src="https://cdn-icons-png.flaticon.com/512/845/845646.png" alt="success">
+            <img src="https://cdn-icons-png.flaticon.com/512/845/845646.png">
 
-            <h2>Merci pour votre retour ✅</h2>
+            <h2>
+
+                Fiche envoyée avec succès ✅
+
+            </h2>
 
             <p>
-                Votre avis a bien été enregistré.
-                Nous sommes heureux de vous accompagner
-                dans vos projets d’importation.
+
+                Merci d’avoir pris le temps de partager
+                votre expérience avec AFG Import-Export.
+                Vos retours nous permettent d’améliorer
+                continuellement nos services
+                d’importation et de sourcing.
+
             </p>
 
-            <div class="contact-box">
+            <div class="success-info">
 
                 <p>
+
                     <i class="fa-brands fa-whatsapp"></i>
-                    WhatsApp :
-                    +225 05 66 75 34 86
+
+                    Support client disponible
+
                 </p>
 
-                <br>
+                <p>
+
+                    <i class="fa-solid fa-ship"></i>
+
+                    Importation • Sourcing • Livraison
+
+                </p>
 
                 <p>
+
                     <i class="fa-solid fa-globe"></i>
-                    Chine → Côte d’Ivoire
+
+                    Chine → Afrique
+
                 </p>
 
             </div>
@@ -422,57 +1249,40 @@
 
     <script>
 
-        const stars = document.querySelectorAll(".star");
-        const emoji = document.getElementById("emojiFeedback");
+        // YES / NO BUTTONS
 
-        let rating = 0;
-
-        const emojis = {
-            1: "😡",
-            2: "😕",
-            3: "🙂",
-            4: "😊",
-            5: "😍"
-        };
-
-        stars.forEach((star, index) => {
-
-            star.addEventListener("click", () => {
-
-                rating = index + 1;
-
-                stars.forEach((s, i) => {
-                    s.classList.toggle("active", i < rating);
-                });
-
-                emoji.style.display = "block";
-                emoji.innerHTML = emojis[rating];
-
-            });
-
-        });
-
-        // YES / NO
         const yesBtn = document.getElementById("yesBtn");
         const noBtn = document.getElementById("noBtn");
 
         yesBtn.addEventListener("click", () => {
+
             yesBtn.classList.add("active");
+
             noBtn.classList.remove("active");
+
         });
 
         noBtn.addEventListener("click", () => {
+
             noBtn.classList.add("active");
+
             yesBtn.classList.remove("active");
+
         });
 
         // SUBMIT
-        document.getElementById("submitBtn")
+
+        document
+            .getElementById("submitBtn")
             .addEventListener("click", () => {
 
-                document.getElementById("formContent").style.display = "none";
+                document
+                    .getElementById("formContent")
+                    .style.display = "none";
 
-                document.getElementById("successCard").style.display = "block";
+                document
+                    .getElementById("successCard")
+                    .style.display = "block";
 
             });
 
