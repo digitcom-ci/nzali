@@ -1077,31 +1077,31 @@
                 <div class="recommend">
 
                     <label>
-                
+
                         Souhaitez-vous essayer Nzali ?
-                
+
                     </label>
-                
+
                     <div class="btns">
-                
+
                         <button type="button" class="yes" id="yesBtn">
-                
+
                             <i class="fa-solid fa-thumbs-up"></i>
-                
+
                             Oui
-                
+
                         </button>
-                
+
                         <button type="button" class="no" id="noBtn">
-                
+
                             <i class="fa-solid fa-thumbs-down"></i>
-                
+
                             Non
-                
+
                         </button>
-                
+
                     </div>
-                
+
                 </div>
 
             </div>
@@ -1199,7 +1199,13 @@
         const yesBtn = document.getElementById("yesBtn");
         const noBtn = document.getElementById("noBtn");
 
+        let reponseNzali = "";
+
+        // BOUTON OUI
+
         yesBtn.addEventListener("click", () => {
+
+            reponseNzali = "Oui";
 
             yesBtn.classList.add("active");
 
@@ -1207,13 +1213,19 @@
 
         });
 
+        // BOUTON NON
+
         noBtn.addEventListener("click", () => {
+
+            reponseNzali = "Non";
 
             noBtn.classList.add("active");
 
             yesBtn.classList.remove("active");
 
         });
+
+        // ENVOI FORMULAIRE
 
         document
             .getElementById("submitBtn")
@@ -1227,7 +1239,9 @@
 
                     note: document.getElementById("note").value,
 
-                    commentaire: document.getElementById("commentaire").value
+                    commentaire: document.getElementById("commentaire").value,
+
+                    essayerNzali: reponseNzali
 
                 };
 
